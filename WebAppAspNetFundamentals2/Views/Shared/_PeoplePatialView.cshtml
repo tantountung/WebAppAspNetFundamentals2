@@ -1,0 +1,19 @@
+﻿@model List<Person>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>City</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <partial name="_PersonPatialView" model="item" />
+        }
+    </tbody>
+
+</table>

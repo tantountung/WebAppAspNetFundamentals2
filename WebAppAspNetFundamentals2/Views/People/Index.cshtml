@@ -1,0 +1,42 @@
+﻿
+@model PeopleViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List of people</h1>
+
+<partial name="../Shared/_PeoplePatialView" model="Model.PeopleList"/>
+
+
+<h1>Enter name or city</h1>
+<form asp-action="Index" asp-controller="People" method="post">
+    <label asp-for="@Model.Search"></label>
+    <input type="text" asp-for="@Model.Search" />
+    <button>Search</button>
+</form>
+
+<h1>Create new person</h1>
+
+<form asp-action="Create" asp-controller="People" method="post">
+    <label asp-for="createPerson.Name"></label>
+    <input asp-for="createPerson.Name" />
+
+    <label asp-for="createPerson.PhoneNumber"></label>
+    <input asp-for="createPerson.PhoneNumber" />
+    <span asp-validation-for="createPerson.PhoneNumber"></span>
+
+    <label asp-for="createPerson.City"></label>
+    <input asp-for="createPerson.City" />
+    <span asp-validation-for="createPerson.City"></span>
+
+    <button>Create</button>
+    <button type="reset">Reset</button>
+
+</form>
+
+
+
+
+
