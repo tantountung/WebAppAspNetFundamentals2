@@ -1,4 +1,15 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿
+function All(event) {
+    event.preventDefault();
+    console.log("OnSubmit Event: ", event);
 
-// Write your JavaScript code.
+    var formUrl = event.target.action;
+    console.log("formUrl", formUrl);
+
+    $.get(formUrl, function (data, status) {
+        console.log("Data: " + data + "\nStatus: " + status);
+
+        $("#PeopleTable").replaceWith(data);
+    });
+}
+
