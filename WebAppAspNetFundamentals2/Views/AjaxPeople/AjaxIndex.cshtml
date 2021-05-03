@@ -1,54 +1,35 @@
-﻿@model PeopleViewModel 
+﻿
 @{
     ViewData["Title"] = "AjaxIndex";
 }
 
 <div>
-    <button>
+    <button id="showAllPeople">
         Show people list
     </button>
 </div>
 
 <div>
-    <form action="/" method="get">
-        <input type="number" name="keyId" />
-        <input type="submit" value="Type in the ID" />
+    <form>
+        <input type="number" />
+        <input type="submit" id="keyId" value="Type in the ID" />
     </form>
 </div>
 
 <div>
-    <button>
+    <button id="showDetail">
         Show detail
     </button>
 </div>
 
 <div>
-    <button>
+    <button id="deletePerson">
         Delete
     </button>
 </div>
 
-<div id="PeopleTable" class="row">
-    <div class="col-12">
-        <div class="row">
-            <div class="col-3"><h4>Name</h4></div>
-            <div class="col-3"><h4>Phone Number</h4></div>
-            <div class="col-3"><h4>City</h4></div>
-            <div class="col-3"><h4>Action</h4></div>
-        </div>
-    </div>
-</div>
-<div>
-    @foreach (var item in Model.PeopleList)
-    {
-        if (item == null)
-        {
-            <p class="col-12">List is empty</p>
-        }
-
-        <partial name="_PersonPatialView" model="item" />
-
-    }
+<div class="row">
+    <div  id="PeopleTable"></div>
 </div>
 
 <script src="~/js/site.js" asp-append-version="true"></script>
