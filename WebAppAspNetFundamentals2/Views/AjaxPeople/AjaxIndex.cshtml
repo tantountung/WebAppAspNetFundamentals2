@@ -1,38 +1,37 @@
-﻿
+﻿@model PeopleViewModel
 @{
     ViewData["Title"] = "AjaxIndex";
 }
 
 <div>
-    <button id="showAllPeople">
+    <button id="showAllPeople" onclick="ShowAll()">
         Show people list
     </button>
 </div>
 
-<div>
-    <form>
-        <input type="number" />
-        <input type="submit" id="keyId" value="Type in the ID" />
-    </form>
+<div>    
+        <input type="number" id="keyId" placeholder="Type in the ID"/>
+        @*<input type="submit"  value="Type in the ID" />*@
+   
 </div>
 
 <div>
-    <button id="showDetail">
+    <button id="showDetail" onclick="DetailPerson()">
         Show detail
     </button>
 </div>
 
 <div>
-    <button id="deletePerson">
+    <button id="deletePerson" onclick="DeletePerson()">
         Delete
     </button>
 </div>
 
 <div class="row">
-    <div  id="PeopleTable"></div>
+    <div  id="AjaxResult"></div>
 </div>
 
-<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/Ajaxsite.js"></script>
 
 
 

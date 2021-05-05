@@ -11,9 +11,9 @@ namespace WebAppAspNetFundamentals2.Models.Service
     {
         IPeopleRepo _peopleRepo;
 
-        public PeopleService()
+        public PeopleService(IPeopleRepo peopleRepo)
         {
-            _peopleRepo = new InMemoryPeopleRepo();
+            _peopleRepo = peopleRepo;
         }
 
         public Person Add(CreatePerson person)

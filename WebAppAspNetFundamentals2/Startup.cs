@@ -8,21 +8,26 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAppAspNetFundamentals2.Models;
+using WebAppAspNetFundamentals2.Models.Service;
 
 namespace WebAppAspNetFundamentals2
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
-
+              
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IPeopleService, PeopleService>();
+            services.AddSingleton<IPeopleRepo, InMemoryPeopleRepo>();
+
             services.AddMvc();
         }
 

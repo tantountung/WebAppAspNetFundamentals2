@@ -13,8 +13,8 @@ namespace WebAppAspNetFundamentals2.Models
 
     public class InMemoryPeopleRepo : IPeopleRepo
     {
-        static int idCounter = 0;
-        static List<Person> peopleList = new List<Person>();
+        int idCounter = 0;
+        List<Person> peopleList = new List<Person>();
 
         public Person Create(Person person)
         {

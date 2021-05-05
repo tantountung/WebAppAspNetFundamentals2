@@ -11,7 +11,12 @@ namespace WebAppAspNetFundamentals2.Controllers
 {
     public class PeopleController : Controller
     {
-       IPeopleService _peopleService = new PeopleService();
+        IPeopleService _peopleService;
+
+        public PeopleController(IPeopleService peopleService)
+        {
+            _peopleService = peopleService;
+        }
 
         [HttpGet]
         public IActionResult Index()

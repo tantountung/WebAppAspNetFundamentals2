@@ -5,18 +5,25 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-
+using WebAppAspNetFundamentals2.Models.Service;
 
 namespace WebAppAspNetFundamentals2.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        IPeopleService _peopleService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IPeopleService peopleService)
         {
-            _logger = logger;
+            _peopleService = peopleService;
         }
+        
+        //private readonly ILogger<HomeController> _logger;
+
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
 
         public IActionResult Index()
         {

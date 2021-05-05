@@ -11,18 +11,23 @@ namespace WebAppAspNetFundamentals2.Controllers
 {
     public class AjaxPeopleController : Controller
     {
-        IPeopleService _peopleService = new PeopleService();
+        IPeopleService _peopleService;
+
+        public AjaxPeopleController(IPeopleService peopleService)
+        {
+            _peopleService = peopleService;
+        }
 
         public IActionResult AjaxIndex()
         {
             return View();
         }
-        
-        
+
+
         [HttpGet]
         public IActionResult AjaxShowAll()
         {
-            return PartialView("_PeoplePatialView", _peopleService.All());
+            return PartialView("_PeoplePatialView", _peopleService.All().PeopleList);
         }
 
         [HttpPost]
