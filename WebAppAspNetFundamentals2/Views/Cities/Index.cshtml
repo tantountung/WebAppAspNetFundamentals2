@@ -1,0 +1,27 @@
+﻿@model List<City>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>City Name</th>
+            <th>Person</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CityName</td>
+                <td>@item.PersonInQuestion.Name - @item.PersonInQuestion.PhoneNumber</td>
+                <td></td>
+            </tr>
+        }
+    </tbody>      
+ 
+</table>

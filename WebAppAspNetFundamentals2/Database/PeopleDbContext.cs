@@ -16,5 +16,7 @@ namespace WebAppAspNetFundamentals2.Database
 
         public DbSet<Person> People { get; set; }
 
+        public DbSet<City> Cities { get; set; }
+
     }
 }
