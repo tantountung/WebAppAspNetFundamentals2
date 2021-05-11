@@ -18,5 +18,6 @@ namespace WebAppAspNetFundamentals2.Database
 
         public DbSet<City> Cities { get; set; }
 
+        public DbSet<Country> Countries { get; set; }
     }
 }

@@ -4,65 +4,58 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebAppAspNetFundamentals2.Models;
 using WebAppAspNetFundamentals2.Models.Data;
 using WebAppAspNetFundamentals2.Models.Service;
 using WebAppAspNetFundamentals2.Models.ViewModel;
 
 namespace WebAppAspNetFundamentals2.Controllers
 {
-    public class CitiesController : Controller
+    public class CountriesController : Controller
     {
-        private readonly ICityService _cityService;
         private readonly ICountryService _countryService;
-        private readonly IPeopleRepo _peopleRepo;
 
-        public CitiesController(ICityService cityService, ICountryService countryService, IPeopleRepo peopleRepo)
+        public CountriesController(ICountryService countryService)
         {
-            this._cityService = cityService;
-            _countryService = countryService;
-            _peopleRepo = peopleRepo;
+            this._countryService = countryService;
         }
 
         // GET: CitiesController
         public ActionResult Index()
         {
-            return View(_cityService.All());
+            return View(_countryService.All());
         }
-
 
         [HttpGet]
         public IActionResult Create()
         {
-            return View(new CreateCity());
+            return View(new CreateCountry());
         }
 
         [HttpPost]
-        public IActionResult Create(CreateCity createCity)
+        public IActionResult Create(CreateCountry createCountry)
         {
             if (ModelState.IsValid)
             {
-                _cityService.Add(createCity);
+                _countryService.Add(createCountry);
 
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(createCity);
+            return View(createCountry);
         }
 
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            City person = _cityService.FindById(id);
+            Country person = _countryService.FindById(id);
 
             if (person == null)
             {
                 return RedirectToAction(nameof(Index));
             }
 
-            _cityService.Remove(id);
+            _countryService.Remove(id);
             return RedirectToAction(nameof(Index));
         }
-      
     }
 }

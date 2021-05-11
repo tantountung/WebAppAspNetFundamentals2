@@ -10,7 +10,7 @@
 <partial name="../Shared/_PeoplePatialView" model="Model.PeopleList"/>
 
 
-<h1>Enter name or city</h1>
+<h1>Enter name</h1>
 <form asp-action="Index" asp-controller="People" method="post">
     <label asp-for="@Model.Search"></label>
     <input type="text" asp-for="@Model.Search" />
@@ -27,9 +27,18 @@
     <input asp-for="createPerson.PhoneNumber" />
     <span asp-validation-for="createPerson.PhoneNumber"></span>
 
-    <label asp-for="createPerson.City"></label>
-    <input asp-for="createPerson.City" />
-    <span asp-validation-for="createPerson.City"></span>
+    <label asp-for="createPerson.CityId"></label>
+    <<select asp-for="createPerson.CityId">
+
+        <option value="">No City</option>
+
+        @foreach (var item in Model.createPerson.CityList)
+        {
+            <option value="@item.Id">@item.CityName</option>
+        }
+
+    </select>
+    <span asp-validation-for="createPerson.CityId"></span>
 
     <button>Create</button>
     <button type="reset">Reset</button>

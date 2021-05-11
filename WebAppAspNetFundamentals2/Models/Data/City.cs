@@ -9,7 +9,7 @@ namespace WebAppAspNetFundamentals2.Models.Data
     public class City
     {
         [Key]
-        public int CityId { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [MaxLength (100)]
@@ -17,6 +17,8 @@ namespace WebAppAspNetFundamentals2.Models.Data
 
         [Required]
         public Person PersonInQuestion { get; set; }
+
+        public Country Country { get; set; }
 
 
 

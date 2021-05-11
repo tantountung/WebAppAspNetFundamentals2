@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebAppAspNetFundamentals2.Models.Data;
+using WebAppAspNetFundamentals2.Models.Repo;
 using WebAppAspNetFundamentals2.Models.ViewModel;
 
 namespace WebAppAspNetFundamentals2.Models.Service
@@ -10,10 +11,12 @@ namespace WebAppAspNetFundamentals2.Models.Service
     public class PeopleService : IPeopleService
     {
         IPeopleRepo _peopleRepo;
+        ICityRepo _cityRepo;
 
-        public PeopleService(IPeopleRepo peopleRepo)
+        public PeopleService(IPeopleRepo peopleRepo, ICityRepo cityRepo)
         {
             _peopleRepo = peopleRepo;
+            _cityRepo = cityRepo;
         }
 
         public Person Add(CreatePerson person)
@@ -22,7 +25,7 @@ namespace WebAppAspNetFundamentals2.Models.Service
 
             person1.Name = person.Name;
             person1.PhoneNumber = person.PhoneNumber;
-            person1.City = person.City;
+            person1.CityId = person.CityId;
 
             person1 = _peopleRepo.Create(person1);
 
@@ -34,6 +37,7 @@ namespace WebAppAspNetFundamentals2.Models.Service
             PeopleViewModel vm = new PeopleViewModel();
 
             vm.PeopleList = _peopleRepo.Read();
+            vm.createPerson.CityList = _cityRepo.Read();
 
             return vm;
         }
@@ -47,8 +51,7 @@ namespace WebAppAspNetFundamentals2.Models.Service
 
             foreach (Person item in _peopleRepo.Read())
             {
-                if (item.City.ToLower().Contains(vm.Search)
-                    || item.Name.ToLower().Contains(vm.Search))
+                if (item.Name.ToLower().Contains(vm.Search))
                 {
                     vm.PeopleList.Add(item);
                 }
@@ -71,7 +74,7 @@ namespace WebAppAspNetFundamentals2.Models.Service
 
             originalPerson.Name = person.Name;
             originalPerson.PhoneNumber = person.PhoneNumber;
-            originalPerson.City = person.City;
+            originalPerson.CityId = person.CityId;
 
             originalPerson = _peopleRepo.Update(originalPerson);
 

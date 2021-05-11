@@ -7,13 +7,13 @@ using WebAppAspNetFundamentals2.Models.ViewModel;
 
 namespace WebAppAspNetFundamentals2.Models.Service
 {
-    public interface ICityService
+    public interface ICountryService
     {
-        City Add(CreateCity createCity);
-        List<City> All();
+        Country Add(CreateCountry createCountry);
+        List<Country> All();
 
-        City FindById(int id);
-        City Edit(int id, CreateCity city);
+        Country FindById(int id);
+        Country Edit(int id, CreateCountry country);
         bool Remove(int id);
     }
 }

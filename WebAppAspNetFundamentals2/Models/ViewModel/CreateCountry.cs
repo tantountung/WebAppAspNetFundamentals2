@@ -7,18 +7,14 @@ using WebAppAspNetFundamentals2.Models.Data;
 
 namespace WebAppAspNetFundamentals2.Models.ViewModel
 {
-    public class CreateCity
+    public class CreateCountry
     {
         [Required]
         [MaxLength(100)]
-        public string CityName { get; set; }
+        public string CountryName { get; set; }
 
         [Required]
-        public Person PersonInQuestion { get; set; }
-
-        public int CountryId { get; set; }
-
-        public List<Country> CountryList { get; set; }
+        public City CityInQuestion { get; set; }
 
     }
 }

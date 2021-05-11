@@ -53,7 +53,7 @@ namespace WebAppAspNetFundamentals2.Models
 
             originalPerson.Name = person.Name;
             originalPerson.PhoneNumber = person.PhoneNumber;
-            originalPerson.City = person.City;
+            originalPerson.CityId = person.CityId;
 
             return originalPerson;
         }

@@ -32,9 +32,12 @@ namespace WebAppAspNetFundamentals2
             UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IPeopleService, PeopleService>();
-            services.AddScoped<CityService, CityService>();
-             
+            services.AddScoped<ICityService, CityService>();
+            services.AddScoped<ICountryService, CountryService>();
+
             services.AddScoped<IPeopleRepo, DatabasePeopleRepo>();
+            services.AddScoped<ICityRepo, CityRepo>();
+            services.AddScoped<ICountryRepo, CountryRepo>();
 
             services.AddMvc();
         }

@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,18 +7,18 @@ using WebAppAspNetFundamentals2.Models.Data;
 
 namespace WebAppAspNetFundamentals2.Models.Repo
 {
-    public class CityRepo : ICityRepo
+    public class CountryRepo : ICountryRepo
     {
         private readonly PeopleDbContext _peopleDbContext;
 
-        public CityRepo(PeopleDbContext peopleDbContext)
+        public CountryRepo(PeopleDbContext peopleDbContext)
         {
             this._peopleDbContext = peopleDbContext;
         }
 
-        public City Create(City city)
+        public Country Create(Country country)
         {
-            _peopleDbContext.Cities.Add(city);
+            _peopleDbContext.Countries.Add(country);
 
             int result = _peopleDbContext.SaveChanges();
 
@@ -28,24 +27,24 @@ namespace WebAppAspNetFundamentals2.Models.Repo
                 return null;
             }
 
-            return city;
+            return country;
 
         }
 
 
-        public City Read(int id)
+        public Country Read(int id)
         {
-            return _peopleDbContext.Cities.Find(id);
+            return _peopleDbContext.Countries.Find(id);
         }
 
-        public List<City> Read()
+        public List<Country> Read()
         {
-            return _peopleDbContext.Cities.Include(City => City.Country).ToList();
+            return _peopleDbContext.Countries.ToList();
         }
 
-        public City Update(City city)
+        public Country Update(Country country)
         {
-            City originalCity = Read(city.Id);
+            Country originalCity = Read(country.Id);
 
             if (originalCity == null)
             {
@@ -53,7 +52,7 @@ namespace WebAppAspNetFundamentals2.Models.Repo
             }
 
             //originalCity.CityName = city.CityName;
-            _peopleDbContext.Update(city);
+            _peopleDbContext.Update(country);
 
             int result = _peopleDbContext.SaveChanges();
 
@@ -62,19 +61,19 @@ namespace WebAppAspNetFundamentals2.Models.Repo
                 return null;
             }
 
-            return city;
+            return country;
 
         }
         public bool Delete(int id)
         {
-            City originalCity = Read(id);
+            Country originalCity = Read(id);
 
             if (originalCity == null)
             {
                 return false;
             }
 
-            _peopleDbContext.Cities.Remove(originalCity);
+            _peopleDbContext.Countries.Remove(originalCity);
 
             int result = _peopleDbContext.SaveChanges();
 

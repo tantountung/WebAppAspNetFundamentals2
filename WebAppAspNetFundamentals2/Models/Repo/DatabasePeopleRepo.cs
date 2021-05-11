@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -37,7 +38,7 @@ namespace WebAppAspNetFundamentals2.Models.Repo
 
         public List<Person> Read()
         {
-            return peopleDbContext.People.ToList();
+            return peopleDbContext.People.Include("City").ToList();
         }
 
         public Person Update(Person person)
@@ -51,7 +52,14 @@ namespace WebAppAspNetFundamentals2.Models.Repo
 
             originalPerson.Name = person.Name;
             originalPerson.PhoneNumber = person.PhoneNumber;
-            originalPerson.City = person.City;
+            originalPerson.CityId = person.CityId;
+
+            int result = peopleDbContext.SaveChanges();
+
+            if (result == 0)
+            {
+                throw new Exception("unable to update person in database.");
+            }
 
             return originalPerson;
         }
