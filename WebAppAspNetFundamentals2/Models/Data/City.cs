@@ -12,11 +12,11 @@ namespace WebAppAspNetFundamentals2.Models.Data
         public int Id { get; set; }
 
         [Required]
-        [MaxLength (100)]
+        [MaxLength(100)]
         public string CityName { get; set; }
 
-        [Required]
-        public Person PersonInQuestion { get; set; }
+        //Many
+        public List<Person> Population { get; set; }
 
         public Country Country { get; set; }
 
