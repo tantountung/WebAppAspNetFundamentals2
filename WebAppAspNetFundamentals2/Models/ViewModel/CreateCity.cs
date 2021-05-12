@@ -20,5 +20,10 @@ namespace WebAppAspNetFundamentals2.Models.ViewModel
 
         public List<Country> CountryList { get; set; }
 
+        public CreateCity()
+        {
+            CountryList = new List<Country>();
+        }
+
     }
 }

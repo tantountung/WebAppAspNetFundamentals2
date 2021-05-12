@@ -21,6 +21,11 @@ namespace WebAppAspNetFundamentals2.Models.ViewModel
 
         public List<City> CityList { get; set; }
 
+        public CreatePerson()
+        {
+            CityList = new List<City>();
+        }
+
 
     }
 }

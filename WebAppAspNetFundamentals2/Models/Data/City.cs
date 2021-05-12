@@ -20,6 +20,10 @@ namespace WebAppAspNetFundamentals2.Models.Data
 
         public Country Country { get; set; }
 
+        public City()
+        {
+            Population = new List<Person>();
+        }
 
 
 

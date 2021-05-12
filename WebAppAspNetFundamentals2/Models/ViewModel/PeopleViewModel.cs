@@ -8,7 +8,7 @@ namespace WebAppAspNetFundamentals2.Models.ViewModel
 {
     public class PeopleViewModel
     {
-        public List<Person> PeopleList { get; set; }
+        
 
         private string search;
 
@@ -31,9 +31,13 @@ namespace WebAppAspNetFundamentals2.Models.ViewModel
 
         public CreatePerson createPerson { get; set; }
 
+
+        public List<Person> PeopleList { get; set; }
+
         public PeopleViewModel()
         {
             PeopleList = new List<Person>();
+            createPerson = new CreatePerson();
         }
     }
 }

@@ -19,13 +19,13 @@ namespace WebAppAspNetFundamentals2.Controllers
 
         public CitiesController(ICityService cityService, ICountryService countryService, IPeopleRepo peopleRepo)
         {
-            _cityService = cityService;
+            this._cityService = cityService;
             _countryService = countryService;
             _peopleRepo = peopleRepo;
         }
 
         // GET: CitiesController
-        public IActionResult Index()
+        public ActionResult Index()
         {
             return View(_cityService.All());
         }
@@ -34,10 +34,10 @@ namespace WebAppAspNetFundamentals2.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            CreateCity createCity = new CreateCity();
-            createCity.CountryList = _countryService.All();
+            CreateCity newcity = new CreateCity();
+            newcity.CountryList = _countryService.All();
 
-            return View(new CreateCity());
+            return View(newcity);
         }
 
         [HttpPost]
