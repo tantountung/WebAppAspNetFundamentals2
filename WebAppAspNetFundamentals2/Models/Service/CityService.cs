@@ -44,6 +44,7 @@ namespace WebAppAspNetFundamentals2.Models.Service
         public City Edit(int id, CreateCity city)
         {
             City originalCity = FindById(id);
+
             if (originalCity == null)
             {
                 return null;

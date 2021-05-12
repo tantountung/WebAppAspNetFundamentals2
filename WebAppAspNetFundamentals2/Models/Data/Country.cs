@@ -13,6 +13,6 @@ namespace WebAppAspNetFundamentals2.Models.Data
 
         public string CountryName { get; set; }
 
-        public List<City> CityInQuestion { get; set; }
+        public List<City> Citygroup { get; set; }
     }
 }

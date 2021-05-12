@@ -19,15 +19,9 @@ namespace WebAppAspNetFundamentals2.Models.Service
             _cityRepo = cityRepo;
         }
 
-        public Person Add(CreatePerson person)
+        public Person Add(CreatePerson createPerson)
         {
-            Person person1 = new Person();
-
-            person1.Name = person.Name;
-            person1.PhoneNumber = person.PhoneNumber;
-            person1.CityId = person.CityId;
-
-            person1 = _peopleRepo.Create(person1);
+            Person person1 = _peopleRepo.Create(createPerson);
 
             return person1;
         }

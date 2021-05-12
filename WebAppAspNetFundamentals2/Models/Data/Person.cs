@@ -26,5 +26,6 @@ namespace WebAppAspNetFundamentals2.Models.Data
         [Required]
         public City City { get; set; }
 
+
     }
 }

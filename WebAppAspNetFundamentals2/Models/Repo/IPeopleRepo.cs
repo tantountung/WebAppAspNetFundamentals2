@@ -17,7 +17,7 @@ namespace WebAppAspNetFundamentals2.Models
 
     public interface IPeopleRepo
     {
-        Person Create(Person person);
+        Person Create(CreatePerson createperson);
 
         Person Read(int id);
         List<Person> Read();

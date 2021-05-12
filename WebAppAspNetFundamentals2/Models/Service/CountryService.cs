@@ -15,7 +15,7 @@ namespace WebAppAspNetFundamentals2.Models.Service
 
         public CountryService(ICityRepo cityRepo, ICountryRepo countryRepo)
         {
-                       _cityRepo = cityRepo;
+            _cityRepo = cityRepo;
             _countryRepo = countryRepo;
         }
 
@@ -24,7 +24,7 @@ namespace WebAppAspNetFundamentals2.Models.Service
             Country city = new Country();
 
             city.CountryName = createCountry.CountryName;
-            
+
 
             return _countryRepo.Create(city);
         }
@@ -42,6 +42,7 @@ namespace WebAppAspNetFundamentals2.Models.Service
         public Country Edit(int id, CreateCountry country)
         {
             Country originalCity = FindById(id);
+
             if (originalCity == null)
             {
                 return null;

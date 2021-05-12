@@ -16,11 +16,11 @@ namespace WebAppAspNetFundamentals2.Controllers
 
         public CountriesController(ICountryService countryService)
         {
-            this._countryService = countryService;
+            _countryService = countryService;
         }
 
         // GET: CitiesController
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View(_countryService.All());
         }
@@ -28,7 +28,7 @@ namespace WebAppAspNetFundamentals2.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View(new CreateCountry());
+            return View();
         }
 
         [HttpPost]

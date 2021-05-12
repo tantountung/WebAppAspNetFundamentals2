@@ -13,8 +13,8 @@ namespace WebAppAspNetFundamentals2.Models.ViewModel
         [MaxLength(100)]
         public string CountryName { get; set; }
 
-        [Required]
-        public City CityInQuestion { get; set; }
+        //[Required]
+        //public City CityInQuestion { get; set; }
 
     }
 }

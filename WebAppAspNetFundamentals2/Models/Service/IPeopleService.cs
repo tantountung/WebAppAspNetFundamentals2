@@ -17,7 +17,7 @@ namespace WebAppAspNetFundamentals2.Models.Service
 
     public interface IPeopleService
     {
-        Person Add(CreatePerson person);
+        Person Add(CreatePerson createperson);
         PeopleViewModel All();
         PeopleViewModel FindBy(PeopleViewModel Search);
         Person FindBy(int id);

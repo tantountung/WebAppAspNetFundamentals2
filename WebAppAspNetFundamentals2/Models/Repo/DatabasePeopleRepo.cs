@@ -5,22 +5,29 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebAppAspNetFundamentals2.Database;
 using WebAppAspNetFundamentals2.Models.Data;
+using WebAppAspNetFundamentals2.Models.ViewModel;
 
 namespace WebAppAspNetFundamentals2.Models.Repo
 {
     public class DatabasePeopleRepo : IPeopleRepo
     {
-        private readonly PeopleDbContext peopleDbContext;
+        private readonly PeopleDbContext _peopleDbContext;
         public DatabasePeopleRepo(PeopleDbContext peopleDbContext)
         {
-            this.peopleDbContext = peopleDbContext;
+            this._peopleDbContext = peopleDbContext;
         }
 
-        public Person Create(Person person)
+        public Person Create(CreatePerson createperson)
         {
-            peopleDbContext.People.Add(person);
+            Person person = new Person();
 
-            int result = peopleDbContext.SaveChanges();
+            person.Name = createperson.Name;
+            person.PhoneNumber = createperson.PhoneNumber;
+            person.CityId = createperson.CityId;
+
+            _peopleDbContext.People.Add(person);
+
+            int result = _peopleDbContext.SaveChanges();
 
             if (result == 0)
             {
@@ -33,12 +40,12 @@ namespace WebAppAspNetFundamentals2.Models.Repo
 
         public Person Read(int id)
         {
-            return peopleDbContext.People.SingleOrDefault(row => row.Id == id);
+            return _peopleDbContext.People.SingleOrDefault(row => row.Id == id);
         }
 
         public List<Person> Read()
         {
-            return peopleDbContext.People.Include("City").ToList();
+            return _peopleDbContext.People.Include("City").ToList();
         }
 
         public Person Update(Person person)
@@ -54,7 +61,7 @@ namespace WebAppAspNetFundamentals2.Models.Repo
             originalPerson.PhoneNumber = person.PhoneNumber;
             originalPerson.CityId = person.CityId;
 
-            int result = peopleDbContext.SaveChanges();
+            int result = _peopleDbContext.SaveChanges();
 
             if (result == 0)
             {
@@ -72,9 +79,9 @@ namespace WebAppAspNetFundamentals2.Models.Repo
                 return false;
             }
 
-            peopleDbContext.People.Remove(genuinePerson);
+            _peopleDbContext.People.Remove(genuinePerson);
 
-            int result = peopleDbContext.SaveChanges();
+            int result = _peopleDbContext.SaveChanges();
 
             if (result == 0)
             {

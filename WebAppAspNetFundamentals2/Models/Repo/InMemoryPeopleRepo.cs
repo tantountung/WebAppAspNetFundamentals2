@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebAppAspNetFundamentals2.Models.Data;
+using WebAppAspNetFundamentals2.Models.ViewModel;
 
 namespace WebAppAspNetFundamentals2.Models
 {
@@ -16,9 +17,15 @@ namespace WebAppAspNetFundamentals2.Models
         int idCounter = 0;
         List<Person> peopleList = new List<Person>();
 
-        public Person Create(Person person)
+        public Person Create(CreatePerson createperson)
         {
+            Person person = new Person();
+
             person.Id = ++idCounter;
+            person.Name = createperson.Name;
+            person.PhoneNumber = createperson.PhoneNumber;
+            person.CityId = createperson.CityId;
+
             peopleList.Add(person);
 
             return person;
