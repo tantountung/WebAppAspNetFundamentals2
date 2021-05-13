@@ -15,7 +15,7 @@ namespace WebAppAspNetFundamentals2.Models.Data
         [MaxLength(120)]
         public string LanguangeName { get; set; }
 
-        public List<PersonLanguage> PersonLanguage { get; set; }
+        public List<PersonLanguage> PersonLanguages { get; set; }
 
     }
 }

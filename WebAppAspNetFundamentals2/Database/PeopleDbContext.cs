@@ -24,13 +24,13 @@ namespace WebAppAspNetFundamentals2.Database
             });
 
             modelBuilder.Entity<PersonLanguage>()
-                .HasOne<Person>(pl => pl.Person)      
-                .WithMany(p => p.PersonLanguages)   
+                .HasOne<Person>(pl => pl.Person)
+                .WithMany(p => p.PersonLanguages)
                 .HasForeignKey(pl => pl.PersonId);
 
             modelBuilder.Entity<PersonLanguage>()
                 .HasOne<Language>(pl => pl.Language)
-                .WithMany(l => l.PersonLanguages)        
+                .WithMany(l => l.PersonLanguages)
                 .HasForeignKey(pl => pl.LanguageId);
         }
 
