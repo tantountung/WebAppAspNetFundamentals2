@@ -26,6 +26,7 @@ namespace WebAppAspNetFundamentals2.Models.Data
         [Required]
         public City City { get; set; }
 
-
+        //Many to many joint table
+        public List<PersonLanguage> PersonLanguage { get; set; }
     }
 }
