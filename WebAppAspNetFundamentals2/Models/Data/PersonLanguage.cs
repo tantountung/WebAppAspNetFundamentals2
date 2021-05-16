@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAppAspNetFundamentals2.Models.Service;
 
 namespace WebAppAspNetFundamentals2.Models.Data
 {
@@ -12,5 +13,7 @@ namespace WebAppAspNetFundamentals2.Models.Data
 
         public int LanguageId { get; set; }
         public Language Language { get; set; }
+
+
     }
 }

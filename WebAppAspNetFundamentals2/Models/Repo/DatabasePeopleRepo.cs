@@ -40,7 +40,9 @@ namespace WebAppAspNetFundamentals2.Models.Repo
 
         public Person Read(int id)
         {
-            return _peopleDbContext.People.SingleOrDefault(row => row.Id == id);
+            return _peopleDbContext.People.Include (person => person.PersonLanguages)
+                                            .ThenInclude(perLan => perLan.Language) 
+                                            .SingleOrDefault(row => row.Id == id);
         }
 
         public List<Person> Read()

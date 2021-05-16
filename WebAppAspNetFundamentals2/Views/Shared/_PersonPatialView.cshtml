@@ -8,7 +8,9 @@
             <div class="col-3"><p>@Model.CityId</p></div>
             <div class="col-3">
                 <a asp-action="Delete" asp-controller="People"
-                   asp-route-id="@Model.Id">Delete</a>
+                   asp-route-id="@Model.Id">Delete</a>  |
+                <a asp-action="ManagePersonLanguage" asp-controller="People"
+                   asp-route-id="@Model.Id">Manage Person Language</a>
             </div>
         </div>
     </div>
