@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebAppAspNetFundamentals2.Database;
 using WebAppAspNetFundamentals2.Models;
+using WebAppAspNetFundamentals2.Models.Data;
 using WebAppAspNetFundamentals2.Models.Repo;
 using WebAppAspNetFundamentals2.Models.Service;
 
@@ -30,6 +32,11 @@ namespace WebAppAspNetFundamentals2
         {
             services.AddDbContext<PeopleDbContext>(options => options.
             UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            //Identity
+            services.AddIdentity<ClassUser, IdentityRole>()
+                    .AddEntityFrameworkStores<PeopleDbContext>()
+                    .AddDefaultTokenProviders();
 
             services.AddScoped<IPeopleService, PeopleService>();
             services.AddScoped<ICityService, CityService>();
@@ -64,7 +71,8 @@ namespace WebAppAspNetFundamentals2
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication();// Add this for login
+            app.UseAuthorization();// Add this for rights to do it
 
             app.UseEndpoints(endpoints =>
             {

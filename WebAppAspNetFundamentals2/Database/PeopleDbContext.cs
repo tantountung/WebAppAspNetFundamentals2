@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using WebAppAspNetFundamentals2.Models.Data;
 
 namespace WebAppAspNetFundamentals2.Database
 {
-    public class PeopleDbContext : DbContext
+    public class PeopleDbContext : IdentityDbContext<ClassUser>
     {
         public PeopleDbContext(DbContextOptions<PeopleDbContext> options) : base(options)
         {
@@ -17,6 +18,9 @@ namespace WebAppAspNetFundamentals2.Database
         //Fluent API
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder); 
+            //Recommend on the first line inside method.
+
             modelBuilder.Entity<PersonLanguage>().HasKey(pl =>
             new {
                 pl.PersonId,
@@ -43,6 +47,8 @@ namespace WebAppAspNetFundamentals2.Database
         public DbSet<Language> Languages { get; set; }
 
         public DbSet<PersonLanguage> PersonLanguages { get; set; }
+
+        public DbSet<ClassUser> ClassUsers { get; set; }
 
     }
 }
