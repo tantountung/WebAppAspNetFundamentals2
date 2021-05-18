@@ -6,7 +6,7 @@ using WebAppAspNetFundamentals2.Models.Data;
 
 namespace WebAppAspNetFundamentals2.Models.Service
 {
-    public interface IPersonLanguage
+    public interface IPersonLanguageService
     {
         PersonLanguage Create(PersonLanguage personLanguage);
         List<PersonLanguage> All();

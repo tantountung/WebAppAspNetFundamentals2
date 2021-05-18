@@ -7,11 +7,11 @@ using WebAppAspNetFundamentals2.Models.Data;
 
 namespace WebAppAspNetFundamentals2.Models.Service
 {
-    public class PersonLanguage : IPersonLanguage
+    public class PersonLanguageService : IPersonLanguageService
     {
         private readonly IPersonLanguageRepo _personLanguageRepo;
 
-        public PersonLanguage(IPersonLanguageRepo personLanguageRepo)
+        public PersonLanguageService(IPersonLanguageRepo personLanguageRepo)
         {
             _personLanguageRepo = personLanguageRepo;
         }

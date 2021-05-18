@@ -35,7 +35,7 @@ namespace WebAppAspNetFundamentals2
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<ICountryService, CountryService>();
             services.AddScoped<ILanguageService, LanguageService>();
-            services.AddScoped<IPersonLanguage, PersonLanguage>();
+            services.AddScoped<IPersonLanguageService, PersonLanguageService>();
 
             services.AddScoped<IPeopleRepo, DatabasePeopleRepo>();
             services.AddScoped<ICityRepo, CityRepo>();

@@ -31,7 +31,8 @@ namespace WebAppAspNetFundamentals2.Models.Repo
        
         public Language Read(int id)
         {
-            return _peopleDbContext.Languages.SingleOrDefault(language => language.Id == id);
+            return _peopleDbContext.Languages
+                .SingleOrDefault(language => language.Id == id);
         }
 
         public List<Language> Read()
