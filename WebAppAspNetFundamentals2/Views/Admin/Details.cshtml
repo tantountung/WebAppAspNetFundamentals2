@@ -1,0 +1,33 @@
+﻿@model ClassUser
+@{ 
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<dl>
+    <dt>Username</dt>
+    <dd>@Model.UserName</dd>
+
+    <dt>Email</dt>
+    <dd>@Model.Email</dd>
+
+    <dt>Firstname</dt>
+    <dd>@Model.FirstName</dd>
+
+    <dt>Lastname</dt>
+    <dd>@Model.LastName</dd>
+
+    <dt>DOB</dt>
+    <dd>@Model.BirthDate</dd>
+
+    <dt>PhoneNumber</dt>
+    <dd>@Model.PhoneNumber</dd>
+
+    <dt>LockoutEnabled</dt>
+    <dd>@Model.LockoutEnabled</dd>
+
+    <dt>Actions</dt>
+    <dd>@Html.ActionLink("Roles Management", "RolesManagement", "Admin", Model.Id)</dd>
+
+</dl>

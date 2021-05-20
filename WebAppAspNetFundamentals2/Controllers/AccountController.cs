@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,12 @@ namespace WebAppAspNetFundamentals2.Controllers
     public class AccountController : Controller
     {
         private readonly UserManager<ClassUser> _userManager;
+        private readonly SignInManager<ClassUser> _signInManager;
 
-        public AccountController(UserManager<ClassUser> userManager)
+        public AccountController(UserManager<ClassUser> userManager, SignInManager<ClassUser> signInManager)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         [HttpGet]
@@ -57,5 +60,46 @@ namespace WebAppAspNetFundamentals2.Controllers
 
             return View(userReg);
         }
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel userLogin)
+        {
+            if (ModelState.IsValid)
+            {
+
+                Microsoft.AspNetCore.Identity.SignInResult result = 
+                    await _signInManager.PasswordSignInAsync(userLogin.UserName, userLogin.Password, false, false);
+
+                if (result.Succeeded)
+                {
+                    //To do - SIgnIn User
+                    return RedirectToAction("Index", "Home");
+                }
+
+                if (result.IsLockedOut)
+                {
+                    ModelState.AddModelError("Locked out", "Too many login attempts");
+                }
+
+            }
+
+            return View(userLogin);
+        }
+
+
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }
