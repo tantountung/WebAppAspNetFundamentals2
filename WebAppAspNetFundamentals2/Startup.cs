@@ -38,6 +38,11 @@ namespace WebAppAspNetFundamentals2
                     .AddEntityFrameworkStores<PeopleDbContext>()
                     .AddDefaultTokenProviders();
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.AccessDeniedPath = "/Account/AccessDenied";
+            });
+
             services.AddScoped<IPeopleService, PeopleService>();
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<ICountryService, CountryService>();
