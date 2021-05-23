@@ -17,11 +17,12 @@ namespace WebAppAspNetFundamentals2.Models.Service
 
     public interface IPeopleService
     {
-        Person Add(CreatePerson createperson);
+        Person Add(CreatePersonViewModel createPerson);
         PeopleViewModel All();
         PeopleViewModel FindBy(PeopleViewModel Search);
         Person FindBy(int id);
-        Person Edit(int id, Person person);
+        Person EditPerson(int id, CreatePersonViewModel createPerson);
+        CreatePersonViewModel PersonToCreatePerson(Person person);
         bool Remove(int id);
     }
 }

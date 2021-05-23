@@ -17,7 +17,7 @@ namespace WebAppAspNetFundamentals2.Models.Repo
             this._peopleDbContext = peopleDbContext;
         }
 
-        public Person Create(CreatePerson createperson)
+        public Person Create(CreatePersonViewModel createperson)
         {
             Person person = new Person();
 

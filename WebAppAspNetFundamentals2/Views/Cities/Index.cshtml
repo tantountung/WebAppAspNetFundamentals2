@@ -21,7 +21,10 @@
             <tr>
                 <td>@item.CityName</td>
                 <td>@(item.Country == null ? "No Country" : item.Country.CountryName)</td>
-                <td></td>
+                <td>
+                    <a asp-action="Delete" asp-controller="Cities"
+                       >Delete</a>
+                </td>
             </tr>
         }
     </tbody>      

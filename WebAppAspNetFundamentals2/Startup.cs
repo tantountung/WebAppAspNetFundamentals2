@@ -30,8 +30,10 @@ namespace WebAppAspNetFundamentals2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //------------------------- connection to database -----------------------------------------
             services.AddDbContext<PeopleDbContext>(options => options.
             UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
 
             //Identity
             services.AddIdentity<ClassUser, IdentityRole>()
@@ -43,18 +45,21 @@ namespace WebAppAspNetFundamentals2
                 options.AccessDeniedPath = "/Account/AccessDenied";
             });
 
+            //------------------------- services IoC ---------------------------------------------------
             services.AddScoped<IPeopleService, PeopleService>();
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<ICountryService, CountryService>();
             services.AddScoped<ILanguageService, LanguageService>();
             services.AddScoped<IPersonLanguageService, PersonLanguageService>();
 
+            //------------------------- repo IoC -------------------------------------------------------
             services.AddScoped<IPeopleRepo, DatabasePeopleRepo>();
             services.AddScoped<ICityRepo, CityRepo>();
             services.AddScoped<ICountryRepo, CountryRepo>();
             services.AddScoped<ILanguageRepo, LanguageRepo>();
             services.AddScoped<IPersonLanguageRepo, PersonLanguageRepo>();
 
+            //services.AddControllersWithViews();
             services.AddMvc();
         }
 

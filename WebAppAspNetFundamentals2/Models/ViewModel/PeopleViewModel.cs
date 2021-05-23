@@ -29,7 +29,7 @@ namespace WebAppAspNetFundamentals2.Models.ViewModel
 
         }
 
-        public CreatePerson createPerson { get; set; }
+        public CreatePersonViewModel createPerson { get; set; }
 
 
         public List<Person> PeopleList { get; set; }
@@ -37,7 +37,7 @@ namespace WebAppAspNetFundamentals2.Models.ViewModel
         public PeopleViewModel()
         {
             PeopleList = new List<Person>();
-            createPerson = new CreatePerson();
+            createPerson = new CreatePersonViewModel();
         }
     }
 }

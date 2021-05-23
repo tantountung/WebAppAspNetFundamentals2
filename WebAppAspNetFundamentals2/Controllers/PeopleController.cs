@@ -8,9 +8,11 @@ using WebAppAspNetFundamentals2.Models.Service;
 using WebAppAspNetFundamentals2.Models.Data;
 using WebAppAspNetFundamentals2.Models.Repo;
 using PersonLanguage = WebAppAspNetFundamentals2.Models.Data.PersonLanguage;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebAppAspNetFundamentals2.Controllers
 {
+    [Authorize]
     public class PeopleController : Controller
     {
         IPeopleService _peopleService;
@@ -42,11 +44,11 @@ namespace WebAppAspNetFundamentals2.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View(new CreatePerson());
+            return View(new CreatePersonViewModel());
         }
 
         [HttpPost]
-        public IActionResult Create(CreatePerson createPerson)
+        public IActionResult Create(CreatePersonViewModel createPerson)
         {
             if (ModelState.IsValid)
             {
@@ -70,7 +72,7 @@ namespace WebAppAspNetFundamentals2.Controllers
 
             PersonLanguagesViewModel vm = new PersonLanguagesViewModel();
             vm.Person = person;
-            vm.Languages = _languageService.All(); 
+            vm.Languages = _languageService.All();
 
 
             return View(vm);
@@ -86,7 +88,7 @@ namespace WebAppAspNetFundamentals2.Controllers
                 return RedirectToAction("Index");
             }
 
-            
+
 
             PersonLanguage personLanguage = _personLanguangeRepo.Create
                 (new PersonLanguage() { PersonId = personId, LanguageId = languageId });
@@ -108,7 +110,7 @@ namespace WebAppAspNetFundamentals2.Controllers
 
 
 
-             _personLanguangeRepo.Delete(personId, languageId);
+            _personLanguangeRepo.Delete(personId, languageId);
 
 
 
@@ -129,22 +131,57 @@ namespace WebAppAspNetFundamentals2.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-       
-        //[HttpPost]
-        //public IActionResult Delete(int id, DeletePerson deletePerson)
-        //{
-        //    Person person = _peopleService.FindBy(id);
+        [HttpGet]
+        public IActionResult EditPerson(int id)
+        {
+            Person person = _peopleService.FindBy(id);
 
-        //    if (person == null)
-        //    {
-        //        return RedirectToAction("Index");
-        //    }
+            if (person == null)
+            {
+                return RedirectToAction("Index");
+            }
 
-        //    DeletePerson deletePerson = new DeletePerson();
-        //    deletePerson.Delete = _peopleService.Remove(id);
+            EditPerson editPerson = new EditPerson();
+            editPerson.Id = id;
+            editPerson.CreatePerson = _peopleService.PersonToCreatePerson(person);
 
-        //    return View(deletePerson);
-        //}
+            return View(editPerson);
+        }
+
+        [HttpPost]
+        public IActionResult EditPerson(int id, CreatePersonViewModel createPerson)
+        {
+            if (ModelState.IsValid)
+            {
+                Person car = _peopleService.EditPerson(id, createPerson);
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            EditPerson editPerson = new EditPerson();
+            editPerson.Id = id;
+            editPerson.CreatePerson = createPerson;
+
+            return View(editPerson);
+
+
+
+            //[HttpPost]
+            //public IActionResult Delete(int id, DeletePerson deletePerson)
+            //{
+            //    Person person = _peopleService.FindBy(id);
+
+            //    if (person == null)
+            //    {
+            //        return RedirectToAction("Index");
+            //    }
+
+            //    DeletePerson deletePerson = new DeletePerson();
+            //    deletePerson.Delete = _peopleService.Remove(id);
+
+            //    return View(deletePerson);
+            //}
+        }
     }
 }
 //public bool Remove(int id)

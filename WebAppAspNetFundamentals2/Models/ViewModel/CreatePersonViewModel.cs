@@ -7,7 +7,7 @@ using WebAppAspNetFundamentals2.Models.Data;
 
 namespace WebAppAspNetFundamentals2.Models.ViewModel
 {
-    public class CreatePerson
+    public class CreatePersonViewModel
     {
         [Required]
         [MaxLength(100)]
@@ -21,9 +21,10 @@ namespace WebAppAspNetFundamentals2.Models.ViewModel
 
         public List<City> CityList { get; set; }
 
-         public CreatePerson()
+         public CreatePersonViewModel()
         {
             CityList = new List<City>();
+            CityId = new int();
         }
 
 

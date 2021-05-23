@@ -21,6 +21,11 @@ namespace WebAppAspNetFundamentals2.Controllers
             _signInManager = signInManager;
         }
 
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
         [HttpGet]
         public IActionResult Register()
         {

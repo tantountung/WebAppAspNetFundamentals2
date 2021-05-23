@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using WebAppAspNetFundamentals2.Models.ViewModel;
 
 namespace WebAppAspNetFundamentals2.Controllers
 {
+    [Authorize]
     public class LanguagesController : Controller
     {
         private readonly ILanguageService _languageService;

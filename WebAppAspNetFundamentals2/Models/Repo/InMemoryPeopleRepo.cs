@@ -17,7 +17,7 @@ namespace WebAppAspNetFundamentals2.Models
         int idCounter = 0;
         List<Person> peopleList = new List<Person>();
 
-        public Person Create(CreatePerson createperson)
+        public Person Create(CreatePersonViewModel createperson)
         {
             Person person = new Person();
 

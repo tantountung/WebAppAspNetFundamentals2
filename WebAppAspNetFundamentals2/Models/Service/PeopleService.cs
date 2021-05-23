@@ -19,7 +19,7 @@ namespace WebAppAspNetFundamentals2.Models.Service
             _cityRepo = cityRepo;
         }
 
-        public Person Add(CreatePerson createPerson)
+        public Person Add(CreatePersonViewModel createPerson)
         {
             Person person1 = _peopleRepo.Create(createPerson);
 
@@ -57,7 +57,7 @@ namespace WebAppAspNetFundamentals2.Models.Service
             return _peopleRepo.Read(id);
         }
 
-        public Person Edit(int id, Person person)
+        public Person EditPerson(int id, CreatePersonViewModel createPerson)
         {
             Person originalPerson = FindBy(id);
 
@@ -66,9 +66,9 @@ namespace WebAppAspNetFundamentals2.Models.Service
                 return null;
             }
 
-            originalPerson.Name = person.Name;
-            originalPerson.PhoneNumber = person.PhoneNumber;
-            originalPerson.CityId = person.CityId;
+            originalPerson.Name = createPerson.Name;
+            originalPerson.PhoneNumber = createPerson.PhoneNumber;
+            originalPerson.CityId = createPerson.CityId;
 
             originalPerson = _peopleRepo.Update(originalPerson);
 
@@ -85,6 +85,18 @@ namespace WebAppAspNetFundamentals2.Models.Service
                 return false;
             }
             return _peopleRepo.Delete(originalPerson);
+        }
+
+        public CreatePersonViewModel PersonToCreatePerson(Person person)
+        {
+            CreatePersonViewModel createPerson = new CreatePersonViewModel();
+
+            createPerson.Name = person.Name;
+            createPerson.PhoneNumber = person.PhoneNumber;
+            createPerson.CityId = person.CityId;
+
+
+            return createPerson;
         }
 
     }

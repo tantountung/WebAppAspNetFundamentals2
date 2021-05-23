@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using WebAppAspNetFundamentals2.Models.ViewModel;
 using WebAppAspNetFundamentals2.Models.Service;
 using WebAppAspNetFundamentals2.Models.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebAppAspNetFundamentals2.Controllers
 {
+    [Authorize]
     public class AjaxPeopleController : Controller
     {
         IPeopleService _peopleService;

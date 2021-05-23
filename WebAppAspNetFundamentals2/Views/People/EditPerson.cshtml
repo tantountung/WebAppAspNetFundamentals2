@@ -1,0 +1,36 @@
+﻿@model EditPerson
+
+@{
+    ViewData["Title"] = "EditPerson";
+}
+
+<h1>Edit</h1>
+
+<form asp-action="EditPerson" asp-controller="People" asp-route-id="@Model.Id" method="post">
+
+    <label asp-for="CreatePerson.Name"></label>
+    <input asp-for="CreatePerson.Name" />
+    <span asp-validation-for="CreatePerson.Name"></span>
+
+    <label asp-for="CreatePerson.PhoneNumber"></label>
+    <input asp-for="CreatePerson.PhoneNumber" />
+    <span asp-validation-for="CreatePerson.PhoneNumber"></span>
+
+
+    <label asp-for="CreatePerson.CityList"></label>
+    <select asp-for="CreatePerson.CityList">
+        <option value="" disabled>Select a City</option>
+        @foreach (City item in Model.CreatePerson.CityList)
+        {
+            <option value="@item">@item</option>
+        }
+    </select>
+    <span asp-validation-for="CreatePerson.CityList"></span>
+
+    <input type="submit" value="Save changes" />
+</form>
+
+
+//SqlException: The UPDATE statement conflicted with the FOREIGN KEY constraint
+ "FK_People_Cities_CityId". 
+The conflict occurred in database "PeopleDB", table "dbo.Cities", column 'Id'.
