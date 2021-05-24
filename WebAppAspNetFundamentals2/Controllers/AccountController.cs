@@ -52,7 +52,7 @@ namespace WebAppAspNetFundamentals2.Controllers
 
                 if (result.Succeeded)
                 {
-                    //To do - SIgnIn User
+                   
                     return RedirectToAction("Index", "Home");
                 }
 

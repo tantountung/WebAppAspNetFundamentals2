@@ -48,7 +48,8 @@ namespace WebAppAspNetFundamentals2.Database
 
         public DbSet<PersonLanguage> PersonLanguages { get; set; }
 
-        public DbSet<ClassUser> ClassUsers { get; set; }
+        //public DbSet<ClassUser> ClassUsers { get; set; }
+        //security risk
 
     }
 }
