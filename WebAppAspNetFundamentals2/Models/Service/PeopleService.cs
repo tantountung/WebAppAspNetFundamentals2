@@ -28,12 +28,36 @@ namespace WebAppAspNetFundamentals2.Models.Service
 
         public PeopleViewModel All()
         {
-            PeopleViewModel vm = new PeopleViewModel();
+            PeopleViewModel vm = new PeopleViewModel();// there is loop for population and citygroup
+            //but C# and razor can manage it but not Json converter, thats why
+            // stuck in /api/react
+
 
             vm.PeopleList = _peopleRepo.Read();
             vm.createPerson.CityList = _cityRepo.Read();
 
             return vm;
+        }
+
+        public List<Person> JsonAll()//vreated to avoid infinite loop,
+                                     //bware of the next loop for language and person
+        {
+            List<Person> newList = _peopleRepo.Read();//if in controller, must be _peopleService
+
+            foreach (var person in newList)
+            {
+                person.City.Population = null;//dimished the infinite loop,
+                //beofer the error message is 'maximum depth is 32'
+
+                if (person.City.Country != null)
+                {
+                    person.City.Country.Citygroup = null;
+                }
+
+            }
+
+            return newList;
+
         }
 
         public PeopleViewModel FindBy(PeopleViewModel vm)

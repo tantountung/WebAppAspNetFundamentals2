@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using WebAppAspNetFundamentals2.Models.Service;
 
 namespace WebAppAspNetFundamentals2.Controllers
 {
+    [EnableCors("ReactPolicy")]
     [Route("api/[controller]")]
     [ApiController]
     public class ReactController : ControllerBase
@@ -20,10 +22,11 @@ namespace WebAppAspNetFundamentals2.Controllers
             _peopleService = peopleService;
         }
 
+        
         [HttpGet]
         public List<Person> Get()
         {
-            return _peopleService.All().PeopleList;
+            return _peopleService.JsonAll();//created so no function in controller but only in service
         }
 
     }

@@ -21,6 +21,7 @@ namespace WebAppAspNetFundamentals2
     public class Startup
     {
         public IConfiguration Configuration { get; }
+        
 
         public Startup(IConfiguration configuration)
         {
@@ -59,6 +60,19 @@ namespace WebAppAspNetFundamentals2
             services.AddScoped<ILanguageRepo, LanguageRepo>();
             services.AddScoped<IPersonLanguageRepo, PersonLanguageRepo>();
 
+            //-------------------------CORS----------------------
+
+            services.AddCors(options =>
+                {
+                    options.AddPolicy("ReactPolicy",
+                        builder =>
+                        {
+                            builder.WithOrigins("*")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                        });
+                });
+
             //services.AddControllersWithViews();
             services.AddMvc();
         }
@@ -79,7 +93,10 @@ namespace WebAppAspNetFundamentals2
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+          
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthentication();// Add this for login
             app.UseAuthorization();// Add this for rights to do it

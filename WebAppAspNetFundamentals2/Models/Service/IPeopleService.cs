@@ -19,6 +19,8 @@ namespace WebAppAspNetFundamentals2.Models.Service
     {
         Person Add(CreatePersonViewModel createPerson);
         PeopleViewModel All();
+
+        List<Person> JsonAll();
         PeopleViewModel FindBy(PeopleViewModel Search);
         Person FindBy(int id);
         Person EditPerson(int id, CreatePersonViewModel createPerson);
