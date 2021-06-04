@@ -73,6 +73,10 @@ namespace WebAppAspNetFundamentals2
                         });
                 });
 
+            //----------------Sawgger------------
+
+            services.AddSwaggerGen();
+
             //services.AddControllersWithViews();
             services.AddMvc();
         }
@@ -93,7 +97,15 @@ namespace WebAppAspNetFundamentals2
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-          
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "People  API V1");
+            });
+
             app.UseRouting();
 
             app.UseCors();
