@@ -12,11 +12,13 @@ namespace WebAppAspNetFundamentals2.Models.Service
     {
         IPeopleRepo _peopleRepo;
         ICityRepo _cityRepo;
+        ICountryRepo _countryRepo;
 
-        public PeopleService(IPeopleRepo peopleRepo, ICityRepo cityRepo)
+        public PeopleService(IPeopleRepo peopleRepo, ICityRepo cityRepo, ICountryRepo countryRepo)
         {
             _peopleRepo = peopleRepo;
             _cityRepo = cityRepo;
+            _countryRepo = countryRepo;
         }
 
         public Person Add(CreatePersonViewModel createPerson)
@@ -46,13 +48,15 @@ namespace WebAppAspNetFundamentals2.Models.Service
 
             foreach (var person in newList)
             {
-                person.City.Population = null;//dimished the infinite loop,
+                person.CityName.Population = null;//dimished the infinite loop,
                 //beofer the error message is 'maximum depth is 32'
 
-                if (person.City.Country != null)
+                if (person.CityName.Country != null)
                 {
-                    person.City.Country.Citygroup = null;
+                    person.CityName.Country.Citygroup = null;
                 }
+
+
 
             }
 
@@ -92,7 +96,8 @@ namespace WebAppAspNetFundamentals2.Models.Service
 
             originalPerson.Name = createPerson.Name;
             originalPerson.PhoneNumber = createPerson.PhoneNumber;
-            originalPerson.CityId = createPerson.CityId;
+            originalPerson.CityName = createPerson.CityName;
+            originalPerson.CountryName = createPerson.CountryName;
 
             originalPerson = _peopleRepo.Update(originalPerson);
 
@@ -117,7 +122,8 @@ namespace WebAppAspNetFundamentals2.Models.Service
 
             createPerson.Name = person.Name;
             createPerson.PhoneNumber = person.PhoneNumber;
-            createPerson.CityId = person.CityId;
+            createPerson.CityName = person.CityName;
+            createPerson.CountryName = person.CountryName;
 
 
             return createPerson;

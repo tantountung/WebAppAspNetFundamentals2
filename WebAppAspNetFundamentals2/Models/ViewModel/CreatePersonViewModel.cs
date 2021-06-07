@@ -17,14 +17,22 @@ namespace WebAppAspNetFundamentals2.Models.ViewModel
         public string PhoneNumber { get; set; }
 
 
-        public int CityId { get; set; }
+        
+
+        public City CityName { get; set; }
+
+        public Country CountryName { get; set; }
 
         public List<City> CityList { get; set; }
 
-         public CreatePersonViewModel()
+        public List<Country> CountryList { get; set; }
+
+        public CreatePersonViewModel()
         {
             CityList = new List<City>();
-            CityId = new int();
+            CityName = new City();
+            CountryList = new List<Country>();
+            CountryName = new Country();
         }
 
 

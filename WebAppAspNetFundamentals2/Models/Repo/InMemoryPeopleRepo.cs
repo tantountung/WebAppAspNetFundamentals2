@@ -24,7 +24,8 @@ namespace WebAppAspNetFundamentals2.Models
             person.Id = ++idCounter;
             person.Name = createperson.Name;
             person.PhoneNumber = createperson.PhoneNumber;
-            person.CityId = createperson.CityId;
+            person.CityName = createperson.CityName;
+            person.CountryName = createperson.CountryName;
 
             peopleList.Add(person);
 
@@ -60,7 +61,9 @@ namespace WebAppAspNetFundamentals2.Models
 
             originalPerson.Name = person.Name;
             originalPerson.PhoneNumber = person.PhoneNumber;
-            originalPerson.CityId = person.CityId;
+           
+            originalPerson.CityName = person.CityName;
+            originalPerson.CountryName = person.CountryName;
 
             return originalPerson;
         }

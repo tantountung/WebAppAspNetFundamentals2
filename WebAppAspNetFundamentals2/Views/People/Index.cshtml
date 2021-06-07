@@ -27,8 +27,8 @@
     <input asp-for="createPerson.PhoneNumber" />
     <span asp-validation-for="createPerson.PhoneNumber"></span>
 
-    <label asp-for="createPerson.CityId"></label>
-    <<select asp-for="createPerson.CityId">
+    <label asp-for="createPerson.CityName"></label>
+    <<select asp-for="createPerson.CityName">
 
         <option value="">No City</option>
 
@@ -38,7 +38,20 @@
         }
 
     </select>
-    <span asp-validation-for="createPerson.CityId"></span>
+    <span asp-validation-for="createPerson.CityName"></span>
+
+    <label asp-for="createPerson.CountryName"></label>
+    <<select asp-for="createPerson.CountryName">
+
+        <option value="">No Country</option>
+
+        @foreach (var item in Model.createPerson.CountryList)
+        {
+            <option value="@item.Id">@item.CountryName</option>
+        }
+
+    </select>
+    <span asp-validation-for="createPerson.CountryName"></span>
 
     <button>Create</button>
     <button type="reset">Reset</button>

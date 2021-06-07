@@ -20,11 +20,17 @@ namespace WebAppAspNetFundamentals2.Models.Data
         [MaxLength(60)]
         public string PhoneNumber { get; set; }
 
-        [ForeignKey("City")]
+        //[ForeignKey("City")]
         public int CityId { get; set; }
 
+        [ForeignKey("City")]
         [Required]
-        public City City { get; set; }
+        public City CityName { get; set; }
+
+        [ForeignKey("Country")]
+        public Country CountryName { get; set; }
+
+        public string LanguangeName { get; set; }
 
         //Many to many joint table
         public List<PersonLanguage> PersonLanguages { get; set; }
