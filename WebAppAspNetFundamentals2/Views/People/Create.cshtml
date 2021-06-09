@@ -11,8 +11,8 @@
     <input asp-for="PhoneNumber" />
     <span asp-validation-for="PhoneNumber"></span>
 
-    <label asp-for="CityName"></label>
-    <select asp-for="CityName">
+    <label asp-for="CityId"></label>
+    <select asp-for="CityId">
 
         <option value="">No City</option>
 
@@ -23,9 +23,9 @@
 
     </select>
 
-    <span asp-validation-for="CityName"></span>
+    <span asp-validation-for="CityId"></span>
 
-    <label asp-for="CountryName"></label>
+    @*<label asp-for="CountryName"></label>
     <select asp-for="CountryName">
 
         <option value="">No Country</option>
@@ -37,7 +37,7 @@
 
     </select>
 
-    <span asp-validation-for="CountryName"></span>
+    <span asp-validation-for="CountryName"></span>*@
 
     <button>Create</button>
     <button type="reset">Reset</button>

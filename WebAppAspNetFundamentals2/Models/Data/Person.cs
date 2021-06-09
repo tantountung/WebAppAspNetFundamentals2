@@ -20,15 +20,15 @@ namespace WebAppAspNetFundamentals2.Models.Data
         [MaxLength(60)]
         public string PhoneNumber { get; set; }
 
-        //[ForeignKey("City")]
+        [ForeignKey("City")]
         public int CityId { get; set; }
 
-        [ForeignKey("City")]
+        
         [Required]
-        public City CityName { get; set; }
+        public City City { get; set; }
 
-        [ForeignKey("Country")]
-        public Country CountryName { get; set; }
+      
+        //public int CountryId { get; set; }
 
         public string LanguangeName { get; set; }
 

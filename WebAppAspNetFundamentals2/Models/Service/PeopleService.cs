@@ -12,13 +12,13 @@ namespace WebAppAspNetFundamentals2.Models.Service
     {
         IPeopleRepo _peopleRepo;
         ICityRepo _cityRepo;
-        ICountryRepo _countryRepo;
+        //ICountryRepo _countryRepo;
 
-        public PeopleService(IPeopleRepo peopleRepo, ICityRepo cityRepo, ICountryRepo countryRepo)
+        public PeopleService(IPeopleRepo peopleRepo, ICityRepo cityRepo) /*ICountryRepo countryRepo)*/
         {
             _peopleRepo = peopleRepo;
             _cityRepo = cityRepo;
-            _countryRepo = countryRepo;
+            //_countryRepo = countryRepo;
         }
 
         public Person Add(CreatePersonViewModel createPerson)
@@ -48,12 +48,12 @@ namespace WebAppAspNetFundamentals2.Models.Service
 
             foreach (var person in newList)
             {
-                person.CityName.Population = null;//dimished the infinite loop,
+                person.City.Population = null;//dimished the infinite loop,
                 //beofer the error message is 'maximum depth is 32'
 
-                if (person.CityName.Country != null)
+                if (person.City.Country != null)
                 {
-                    person.CityName.Country.Citygroup = null;
+                    person.City.Country.Citygroup = null;
                 }
 
 
@@ -96,8 +96,8 @@ namespace WebAppAspNetFundamentals2.Models.Service
 
             originalPerson.Name = createPerson.Name;
             originalPerson.PhoneNumber = createPerson.PhoneNumber;
-            originalPerson.CityName = createPerson.CityName;
-            originalPerson.CountryName = createPerson.CountryName;
+            originalPerson.CityId = createPerson.CityId;
+            //originalPerson.CountryName = createPerson.CountryName;
 
             originalPerson = _peopleRepo.Update(originalPerson);
 
@@ -122,8 +122,8 @@ namespace WebAppAspNetFundamentals2.Models.Service
 
             createPerson.Name = person.Name;
             createPerson.PhoneNumber = person.PhoneNumber;
-            createPerson.CityName = person.CityName;
-            createPerson.CountryName = person.CountryName;
+            createPerson.CityId = person.CityId;
+            //createPerson.CountryName = person.CountryName;
 
 
             return createPerson;

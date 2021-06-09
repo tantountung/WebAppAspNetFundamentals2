@@ -27,8 +27,8 @@
     <input asp-for="createPerson.PhoneNumber" />
     <span asp-validation-for="createPerson.PhoneNumber"></span>
 
-    <label asp-for="createPerson.CityName"></label>
-    <<select asp-for="createPerson.CityName">
+    <label asp-for="createPerson.CityId"></label>
+    <<select asp-for="createPerson.CityId">
 
         <option value="">No City</option>
 
@@ -38,9 +38,9 @@
         }
 
     </select>
-    <span asp-validation-for="createPerson.CityName"></span>
+    <span asp-validation-for="createPerson.CityId"></span>
 
-    <label asp-for="createPerson.CountryName"></label>
+    @*<label asp-for="createPerson.CountryName"></label>
     <<select asp-for="createPerson.CountryName">
 
         <option value="">No Country</option>
@@ -51,7 +51,7 @@
         }
 
     </select>
-    <span asp-validation-for="createPerson.CountryName"></span>
+    <span asp-validation-for="createPerson.CountryName"></span>*@
 
     <button>Create</button>
     <button type="reset">Reset</button>

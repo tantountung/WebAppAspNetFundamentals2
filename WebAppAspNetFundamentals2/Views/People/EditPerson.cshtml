@@ -27,7 +27,7 @@
     </select>
     <span asp-validation-for="CreatePerson.CityList"></span>
 
-    <label asp-for="CreatePerson.CountryList"></label>
+    @*<label asp-for="CreatePerson.CountryList"></label>
     <select asp-for="CreatePerson.CountryList">
         <option value="" disabled>Select a Country</option>
         @foreach (Country item in Model.CreatePerson.CountryList)
@@ -35,7 +35,7 @@
             <option value="@item">@item</option>
         }
     </select>
-    <span asp-validation-for="CreatePerson.CountryList"></span>
+    <span asp-validation-for="CreatePerson.CountryList"></span>*@
 
 
     <input type="submit" value="Save changes" />

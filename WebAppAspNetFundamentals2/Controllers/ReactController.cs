@@ -17,17 +17,17 @@ namespace WebAppAspNetFundamentals2.Controllers
     public class ReactController : ControllerBase
     {
         private readonly IPeopleService _peopleService;
-        private readonly ICityService _cityService;
-        private readonly ICountryService _countryService;
+        //private readonly ICityService _cityService;
+        //private readonly ICountryService _countryService;
 
-        public ReactController(IPeopleService peopleService, ICityService cityService, ICountryService countryService)
+        public ReactController(IPeopleService peopleService)//, ICityService cityService, ICountryService countryService)
         {
             _peopleService = peopleService;
-            _cityService = cityService;
-            _countryService = countryService;
+            //_cityService = cityService;
+            //_countryService = countryService;
         }
 
-        
+
         [HttpGet]
         public List<Person> Get()
         {
@@ -42,7 +42,7 @@ namespace WebAppAspNetFundamentals2.Controllers
 
 
         [HttpPost]
-        public ActionResult<Person> Create([FromBody]CreatePersonViewModel person)
+        public ActionResult<Person> Create([FromBody] CreatePersonViewModel person)
         {
             if (ModelState.IsValid)
             {
@@ -60,6 +60,7 @@ namespace WebAppAspNetFundamentals2.Controllers
             }
             Response.StatusCode = 400;
         }
-
+        //------------------------City------------
+       
     }
 }

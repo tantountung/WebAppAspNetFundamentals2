@@ -23,8 +23,8 @@ namespace WebAppAspNetFundamentals2.Models.Repo
 
             person.Name = createperson.Name;
             person.PhoneNumber = createperson.PhoneNumber;
-            person.CityName = createperson.CityName;
-            person.CountryName = createperson.CountryName;
+            person.CityId = createperson.CityId;
+            //person.CountryName = createperson.CountryName;
 
             _peopleDbContext.People.Add(person);
 
@@ -48,8 +48,8 @@ namespace WebAppAspNetFundamentals2.Models.Repo
 
         public List<Person> Read()
         {
-            return _peopleDbContext.People.Include("City")
-                .Include("Country").ToList();
+            return _peopleDbContext.People.Include("City").
+                ToList();
         }
 
         public Person Update(Person person)
@@ -63,8 +63,8 @@ namespace WebAppAspNetFundamentals2.Models.Repo
 
             originalPerson.Name = person.Name;
             originalPerson.PhoneNumber = person.PhoneNumber;
-            originalPerson.CityName = person.CityName;
-            originalPerson.CountryName = person.CountryName;
+            originalPerson.CityId = person.CityId;
+            //originalPerson.CountryName = person.CountryName;
 
             int result = _peopleDbContext.SaveChanges();
 

@@ -19,20 +19,20 @@ namespace WebAppAspNetFundamentals2.Models.ViewModel
 
         
 
-        public City CityName { get; set; }
+        public int CityId { get; set; }
 
-        public Country CountryName { get; set; }
+        //public Country CountryId { get; set; }
 
         public List<City> CityList { get; set; }
 
-        public List<Country> CountryList { get; set; }
+        //public List<Country> CountryList { get; set; }
 
         public CreatePersonViewModel()
         {
             CityList = new List<City>();
-            CityName = new City();
-            CountryList = new List<Country>();
-            CountryName = new Country();
+            CityId = new int();
+            //CountryList = new List<Country>();
+            //CountryId = new int();
         }
 
 
