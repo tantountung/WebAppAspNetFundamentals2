@@ -29,7 +29,7 @@ namespace WebAppAspNetFundamentals2.Controllers
         // GET: CitiesController
         public ActionResult Index()
         {
-            return View(_cityService.All());
+            return View(_cityService.JsonAll());
         }
 
 

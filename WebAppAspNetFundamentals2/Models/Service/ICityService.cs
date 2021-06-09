@@ -10,7 +10,7 @@ namespace WebAppAspNetFundamentals2.Models.Service
     public interface ICityService
     {
         City Add(CreateCity createCity);
-        List<City> All();
+        List<City> JsonAll();
 
         City FindById(int id);
         City Edit(int id, CreateCity city);

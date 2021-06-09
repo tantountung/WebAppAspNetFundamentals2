@@ -36,6 +36,24 @@ namespace WebAppAspNetFundamentals2.Models.Service
             return _cityRepo.Read();
         }
 
+        public List<City> JsonAll()
+        {
+            List<City> newList = _cityRepo.Read();//if in controller, must be _cityService
+
+            foreach (var city in newList)
+            {
+                city.Country.Citygroup = null;//dimished the infinite loop,
+                //beofer the error message is 'maximum depth is 32'
+
+                if (city.Country != null)
+                {
+                    city.Country.Citygroup = null;
+                }
+            }
+
+            return newList;
+        }
+
         public City FindById(int id)
         {
             return _cityRepo.Read(id);
