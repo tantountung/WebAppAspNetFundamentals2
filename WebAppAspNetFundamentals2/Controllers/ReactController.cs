@@ -17,14 +17,18 @@ namespace WebAppAspNetFundamentals2.Controllers
     public class ReactController : ControllerBase
     {
         private readonly IPeopleService _peopleService;
+        private readonly ILanguageService _languageService;
+        private readonly IPersonLanguageService _personLanguageService;
         private readonly ICityService _cityService;
-        //private readonly ICountryService _countryService;
+        private readonly ICountryService _countryService;
 
-        public ReactController(IPeopleService peopleService, ICityService cityService)//, ICountryService countryService)
+        public ReactController(IPeopleService peopleService, ILanguageService languageService, IPersonLanguageService personLanguageService,  ICityService cityService, ICountryService countryService)
         {
             _peopleService = peopleService;
+            _languageService = languageService;
+            _personLanguageService = personLanguageService;
             _cityService = cityService;
-            //_countryService = countryService;
+            _countryService = countryService;
         }
 
 

@@ -82,7 +82,16 @@ namespace WebAppAspNetFundamentals2.Models.Service
         }
         public Person FindBy(int id)
         {
-            return _peopleRepo.Read(id);
+            Person newPerson = _peopleRepo.Read(id);//if in controller, must be _peopleService
+
+            //newPerson.City.Country = null;
+
+            //if (newPerson.City.Country != null)
+            //{
+            //    newPerson.City.Country.Citygroup = null;
+            //}
+
+            return newPerson;
         }
 
         public Person EditPerson(int id, CreatePersonViewModel createPerson)

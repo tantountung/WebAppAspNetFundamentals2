@@ -41,9 +41,33 @@ namespace WebAppAspNetFundamentals2.Models.Repo
 
         public Person Read(int id)
         {
-            return _peopleDbContext.People.Include (person => person.PersonLanguages)
-                                            .ThenInclude(perLan => perLan.Language) 
-                                            .SingleOrDefault(row => row.Id == id);
+            Person newPerson = _peopleDbContext.People.Find(id);
+
+            if (newPerson != null)
+            {
+                newPerson = _peopleDbContext.People
+                                .Include(person => person.PersonLanguages)
+                                .ThenInclude(perLan => perLan.Language)
+                                .Include(person => person.City)
+                                .ThenInclude(city => city.Country)
+                                .SingleOrDefault(row => row.Id == id);
+
+                if (newPerson.PersonLanguages != null)
+                    foreach (var item in newPerson.PersonLanguages)
+                    {
+                        item.Person = null;
+                        item.Language.PersonLanguages = null;
+                    }
+
+                if (newPerson.City.Country != null)
+                {
+                    newPerson.City.Country.Citygroup = null;
+                }
+                newPerson.City.Population = null;
+            }
+            return newPerson;
+
+
         }
 
         public List<Person> Read()
@@ -51,6 +75,28 @@ namespace WebAppAspNetFundamentals2.Models.Repo
             return _peopleDbContext.People.Include("City").
                 ToList();
         }
+
+        public List<Person> JsonRead()
+        {
+            List<Person> newList = _peopleDbContext.People
+                .Include("City")
+                .ToList();
+
+            foreach (var person in newList)
+            {
+                person.City.Population = null;
+
+                if (person.City.Country != null)
+                {
+                    person.City.Country.Citygroup = null;
+                }
+            }
+
+            return newList;
+        }
+
+
+
 
         public Person Update(Person person)
         {
