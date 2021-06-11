@@ -11,7 +11,7 @@ namespace WebAppAspNetFundamentals2.Models.Service
     {
         Country Add(CreateCountry createCountry);
         List<Country> All();
-
+        public List<Country> JsonAll();
         Country FindById(int id);
         Country Edit(int id, CreateCountry country);
         bool Remove(int id);

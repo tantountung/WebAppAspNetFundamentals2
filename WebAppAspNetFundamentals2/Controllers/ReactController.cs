@@ -72,5 +72,12 @@ namespace WebAppAspNetFundamentals2.Controllers
             return _cityService.JsonAll();
         }
 
+
+        [HttpGet("Countries")]
+        public List<Country> GetCountries()
+        {
+            return _countryService.All();
+        }
+
     }
 }

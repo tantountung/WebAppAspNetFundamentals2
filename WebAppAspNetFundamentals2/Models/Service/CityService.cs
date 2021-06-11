@@ -43,14 +43,18 @@ namespace WebAppAspNetFundamentals2.Models.Service
             foreach (var city in newList)
             {
                 city.Country = null;
-                city.Population = null;
+                //city.Population. = null;
 
+                if (city.Country != null)
+                {
+                    city.Country.Citygroup = null;
+                }
                 //city.Country.Citygroup = null;//dimished the infinite loop,
                 ////beofer the error message is 'maximum depth is 32'
 
-                //if (city.Country != null)
+                //if (city.Population != null)
                 //{
-                //    city.Country.Citygroup = null;
+                //    city.Population. = null;
                 //}
             }
 

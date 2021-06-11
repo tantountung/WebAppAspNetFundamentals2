@@ -34,6 +34,24 @@ namespace WebAppAspNetFundamentals2.Models.Service
             return _countryRepo.Read();
         }
 
+        public List<Country> JsonAll()
+        {
+            List<Country> newList = _countryRepo.Read();//if in controller, must be _cityService
+
+            foreach (var country in newList)
+            {
+                country.Citygroup = null;
+
+                if (country.Citygroup != null)
+                {
+                    country.Citygroup = null;
+                }
+            }
+
+
+
+            return newList;
+        }
         public Country FindById(int id)
         {
             return _countryRepo.Read(id);
