@@ -22,7 +22,9 @@ namespace WebAppAspNetFundamentals2.Models.Service
 
         List<Person> JsonAll();
         PeopleViewModel FindBy(PeopleViewModel Search);
-        Person FindBy(int id);
+        Person FindBy(int id);//copy line with Ctrl D
+
+        Person JsonFindBy(int id);
         Person EditPerson(int id, CreatePersonViewModel createPerson);
         CreatePersonViewModel PersonToCreatePerson(Person person);
         bool Remove(int id);

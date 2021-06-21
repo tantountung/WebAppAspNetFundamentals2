@@ -12,6 +12,8 @@ namespace WebAppAspNetFundamentals2.Models.Service
         City Add(CreateCity createCity);
         List<City> JsonAll();
 
+        List<City> All();
+
         City FindById(int id);
         City Edit(int id, CreateCity city);
         bool Remove(int id);

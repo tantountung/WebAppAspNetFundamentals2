@@ -42,10 +42,10 @@ namespace WebAppAspNetFundamentals2.Models.Service
             {
                 country.Citygroup = null;
 
-                if (country.Citygroup != null)
-                {
-                    country.Citygroup = null;
-                }
+                //if (country.Citygroup != null)
+                //{
+                //    country.Citygroup = null;
+                //}
             }
 
 

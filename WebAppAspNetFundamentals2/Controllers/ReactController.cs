@@ -41,7 +41,7 @@ namespace WebAppAspNetFundamentals2.Controllers
         [HttpGet("{id}")]
         public Person GetById(int id)
         {
-            return _peopleService.FindBy(id);//created so no function in controller but only in service
+            return _peopleService.JsonFindBy(id);//created so no function in controller but only in service
         }
 
 

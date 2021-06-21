@@ -52,18 +52,7 @@ namespace WebAppAspNetFundamentals2.Models.Repo
                                 .ThenInclude(city => city.Country)
                                 .SingleOrDefault(row => row.Id == id);
 
-                if (newPerson.PersonLanguages != null)
-                    foreach (var item in newPerson.PersonLanguages)
-                    {
-                        item.Person = null;
-                        item.Language.PersonLanguages = null;
-                    }
 
-                if (newPerson.City.Country != null)
-                {
-                    newPerson.City.Country.Citygroup = null;
-                }
-                newPerson.City.Population = null;
             }
             return newPerson;
 

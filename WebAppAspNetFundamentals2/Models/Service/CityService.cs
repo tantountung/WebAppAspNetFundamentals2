@@ -42,8 +42,8 @@ namespace WebAppAspNetFundamentals2.Models.Service
 
             foreach (var city in newList)
             {
-                city.Country = null;
-                //city.Population. = null;
+                //city.Country = null;
+                city.Population = null;
 
                 if (city.Country != null)
                 {

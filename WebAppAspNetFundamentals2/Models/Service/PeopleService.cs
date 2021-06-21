@@ -94,7 +94,29 @@ namespace WebAppAspNetFundamentals2.Models.Service
             return newPerson;
         }
 
-        public Person EditPerson(int id, CreatePersonViewModel createPerson)
+        public Person JsonFindBy(int id)
+        {
+            Person newPerson = _peopleRepo.Read(id);//if in controller, must be _peopleService
+           
+            if (newPerson.PersonLanguages != null)
+                foreach (var item in newPerson.PersonLanguages)
+                {
+                    item.Person = null;
+                    item.Language.PersonLanguages = null;
+                }
+
+            if (newPerson.City.Country != null)
+            {
+                newPerson.City.Country.Citygroup = null;
+            }
+            newPerson.City.Population = null;
+
+            return newPerson;
+        }
+
+                     
+
+public Person EditPerson(int id, CreatePersonViewModel createPerson)
         {
             Person originalPerson = FindBy(id);
 
